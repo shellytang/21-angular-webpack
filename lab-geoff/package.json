@@ -1,0 +1,14 @@
+{
+  "name": "lab-21-geoff",
+  "version": "1.0.0",
+  "description": "401js-lab-21",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "geoff-cox",
+  "license": "ISC"
+}
