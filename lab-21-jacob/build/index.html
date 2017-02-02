@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app"demoApp"> <!-- this declare the page an angular app page. it will apply to everything below (within </>)-->
+  <head>
+  <title>Cowsay Client</title>
+  </head>
+  <body>
+    <section ng-controller="CowsayController">  <!--A controller is like a handlebars template -->
+      <h1> {{cowsayCtrl.title}}</h1> <!-- below is an instance of the cowsay controller -->
+      <input type="text" ng-model="cowsayCtrl.text">
+      <button ng-click="cowsayCtrl.helloClick(cowsayCtrl.text)">Click me for spam</button>
+      <pre> <!--whenever we hit this button, it will call this function, and update variable up there-->
+        {{cowsayCtrl.updateCow(cowsayCtrl.text)}}
+      </pre>
+    </section>
+    <section ng-controller="CowsayController">
+      <h1> {{cowsayCtrl.title}} </h1> <!-- this is another instance of the same cowsay controller -->
+      <input type="text" ng-model="cowsayCtrl.coolbeans">
+      <p> {{cowsayCtrl.coolbeans}} </p>
+    </section>
+  <script type="text/javascript" src="bundle.js"></script></body>
+</html>

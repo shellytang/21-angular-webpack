@@ -1,0 +1,24 @@
+{
+  "name": "lab-21-intro-to-angular-webpack",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/jisenber/lab-21-intro-to-angular-webpack.git",
+  "author": "jisenber <isenberg.jacob@yahoo.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack"
+  },
+  "dependencies": {
+    "angular": "^1.6.1",
+    "cowsay": "^1.1.9",
+    "cowsay-browser": "^1.1.8",
+    "css-loader": "^0.26.1",
+    "eslint": "^3.14.1",
+    "html-webpack-plugin": "^2.28.0",
+    "live-server": "^1.2.0",
+    "node-sass": "^4.5.0",
+    "sass-loader": "^4.1.1",
+    "style-loader": "^0.13.1",
+    "webpack": "^2.2.1"
+  }
+}
