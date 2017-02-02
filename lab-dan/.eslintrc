@@ -1,6 +1,8 @@
 {
   "extends": "angular",
   "rules": {
+    "angular/controller-as-vm": [2,"self"],
+    "angular/controller-name": [2,"Ctrl"],
     "no-console": 0,
     "indent": [
       2,

@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="cowsayModule" ng-strict-di>
 <head>
   <meta charset="utf-8" />
   <title>Cowsay Angular</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
 </head>
 <body>
-  <pre></pre>
-  <input />
+  <div ng-controller="cowsayCtrl as main">
+    <label>What do you want to say?</label>
+    <input type="text" ng-model="main.message"/>
+    <pre ng-bind="main.output"></pre>
+  </div>
 </body>
 </html>
