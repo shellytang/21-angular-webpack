@@ -1,9 +1,14 @@
 const cowsay = require('cowsay')
 require('./scss/main.scss')
 
-angular.module('cowsayModule', [cowsay])
+angular.module('cowsayModule', [])
 
-angular.module('cowsayModule').controller('cowsayCtrl', function($scope) {
+angular.module('cowsayModule').controller('cowsayCtrl', function() {
   let self = this
-  return self.output = cowsay(self.message)
+  self.message = ''
+  // self.message = cowsay.say({
+  //   text : self.message,
+  // 	e : 'oO',
+  // 	T : 'U '
+  // })
 })
