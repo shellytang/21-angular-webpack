@@ -1,24 +1,27 @@
 {
-  "name": "lab-21-intro-to-angular-webpack",
+  "name": "angular-demo",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
-  "repository": "https://github.com/jisenber/lab-21-intro-to-angular-webpack.git",
-  "author": "jisenber <isenberg.jacob@yahoo.com>",
-  "license": "MIT",
   "scripts": {
-    "build": "webpack"
+    "build": "./node_modules/webpack/bin/webpack.js",
+    "watch": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "angular": "^1.6.1",
-    "cowsay": "^1.1.9",
+    "angular": "^1.5.8",
     "cowsay-browser": "^1.1.8",
-    "css-loader": "^0.26.1",
-    "eslint": "^3.14.1",
-    "html-webpack-plugin": "^2.28.0",
-    "live-server": "^1.2.0",
-    "node-sass": "^4.5.0",
-    "sass-loader": "^4.1.1",
+    "css-loader": "^0.25.0",
+    "html-webpack-plugin": "^2.22.0",
+    "node-sass": "^3.10.1",
+    "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
     "webpack": "^2.2.1"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^1.16.2"
   }
 }

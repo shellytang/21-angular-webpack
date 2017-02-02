@@ -1,3 +1,5 @@
+'use strict';
+
 require('./scss/main.scss');
 const cowsay = require('cowsay-browser');
 const angular = require('angular');
@@ -10,13 +12,16 @@ demoApp.controller('CowsayController', ['$log', '$scope', CowsayController]); //
 
 function CowsayController($log, $scope) { //angular is taking care of dependency injection behind scenes
   $log.debug('init CowsayController');
-
-  $scope.cowsayCtrl.title = 'moooo'
-  $scope.cowsayCtrl.updateCow = function(input) {
+  let cowsayCtrl = $scope.cowsayCtrl = {};
+  cowsayCtrl.title = 'moooo';
+  
+  cowsayCtrl.updateCow = function(input) {
     $log.debug('cowsayCtrl.updateCow()');
     return '\n' + cowsay.say({text: input || 'gimme something to say'});
-  }
-  $scope.cowsayCtrl.helloClick = function(input) {
-    
-  }
-};
+  };
+
+  cowsayCtrl.helloClick = function(input) {
+    $log.debug('cowsayCtrl.helloClick()');
+    $log.log(input);
+  };
+}

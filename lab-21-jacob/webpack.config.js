@@ -17,6 +17,6 @@ module.exports = {
         use: ['style-loader', 'css-loader', 'sass-loader'] //these are applied from right to left --> sass to css to Javascript
         //above is webpack 2. webapck 1 has "load: 'style!css!sass'"
       }
-    ],
+    ]
   }
 };
