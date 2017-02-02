@@ -9,17 +9,13 @@ module.exports = {
   plugins: [
     new HTMLPlugin({
       template: './app/index.html'
-    })
+    }),
   ],
   module: {
     loaders: [
       {
         test: /\.scss$/,
         use: ['style-loader', 'css-loader', 'sass-loader']
-      },
-      {
-        test: /\.js$/,
-        use: ['eslint']
       }
     ]
   }

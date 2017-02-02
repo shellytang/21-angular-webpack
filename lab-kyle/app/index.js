@@ -23,5 +23,8 @@ function CowsayController($log, $scope) {
     return '\n' + cowsay.say({text: input || 'gimme something to say'});
   };
 
-  // cowsayCtrl.helloClick = function(input);
+  cowsayCtrl.helloClick = function(input) {
+    $log.debug('cowsayCtrl.helloClick()')
+    $log.log(input);
+  };
 }
