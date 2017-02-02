@@ -1,0 +1,10 @@
+{
+  "name": "lab-kyle",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {},
+  "license": "MIT",
+  "dependencies": {
+    "cowsay": "^1.1.9"
+  }
+}
