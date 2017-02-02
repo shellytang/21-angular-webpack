@@ -1,5 +1,8 @@
-# ignore db directorys
+# ignore db directory
 db
+
+# ignore build directory
+build
 
 # Created by https://www.gitignore.io/api/linux,node,osx,vim
 
@@ -14,9 +17,6 @@ db
 
 # Linux trash folder which might appear on any partition or disk
 .Trash-*
-
-### Yarn ###
-*yarn.lock
 
 ### Node ###
 # Logs
