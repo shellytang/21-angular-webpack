@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cowsay Client</title>
+  </head>
+  <body ng-app="cowsayApp">
+    {{2+2}}
+    <section ng-controller="CowsayController">
+    <h1>{{cowsayCtrl.title}}</h1>
+      <input type="text" ng-model="cowsayCtrl.text">
+      <pre>
+        {{cowsayCtrl.updateCow(cowsayCtrl.text)}}
+      </pre>
+    </section>
+
+    <section ng-controller="CowsayController">
+    <h1>{{cowsayCtrl.title2}}</h1>
+      <input type="text" ng-model="cowsayCtrl.coolbeans">
+      <p> {{cowsayCtrl.coolbeans}} </p>
+    </section>
+  </body>
+</html>
