@@ -1,0 +1,1 @@
+const cowsay = require('cowsay')
