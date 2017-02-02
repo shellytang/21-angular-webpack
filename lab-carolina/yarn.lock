@@ -56,6 +56,10 @@ alphanum-sort@^1.0.1, alphanum-sort@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/alphanum-sort/-/alphanum-sort-1.0.2.tgz#97a1119649b211ad33691d9f9f486a8ec9fbe0a3"
 
+angular@^1.6.1:
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/angular/-/angular-1.6.1.tgz#a7b6d763a74c157325692619e97257e69d9b6a27"
+
 ansi-escapes@^1.1.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/ansi-escapes/-/ansi-escapes-1.4.0.tgz#d3a8a83b319aa67793662b13e761c7911422306e"
@@ -623,6 +627,12 @@ cookie@0.3.1:
 core-util-is@~1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
+
+cowsay-browser@^1.1.8:
+  version "1.1.8"
+  resolved "https://registry.yarnpkg.com/cowsay-browser/-/cowsay-browser-1.1.8.tgz#afa446e80a0873fe740069face7c08133d13b870"
+  dependencies:
+    optimist "~0.6.1"
 
 create-ecdh@^4.0.0:
   version "4.0.0"
