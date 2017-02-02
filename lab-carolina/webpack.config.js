@@ -1,20 +1,24 @@
-let HTMLPlugin = require('html-webpack-plugin');
+'use strict';
+
+const HTMLPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './app/entry.js',
+  entry: `${__dirname}/app/entry.js`,
   output: {
     filename: 'bundle.js',
-    path: './build'
+    path: 'build',
   },
+  plugins: [
+    new HTMLPlugin({
+      template: `${__dirname}/app/index.html`,
+    }),
+  ],
   module: {
     loaders: [
       {
         test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        use: ['style-loader', 'css-loader', 'sass-loader']
       },
     ],
   },
-  plugins: [
-    new HTMLPlugin,
-  ],
 };
