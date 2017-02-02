@@ -14,11 +14,11 @@ function CowsayController($log, $scope){
   cowsayCtrl.title = 'Moooooo';
 
   cowsayCtrl.updateCow = function(input){
-    return '\n' + cowsay.say({text: input || 'gimme something to say!'});
+    return '\n' + cowsay.think({text: input || 'What am I thinking about'});
   };
 
   cowsayCtrl.helloClick = function(input){
     $log.log(input);
   };
-  
+
 }
