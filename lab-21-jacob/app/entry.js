@@ -14,14 +14,19 @@ function CowsayController($log, $scope) { //angular is taking care of dependency
   $log.debug('init CowsayController');
   let cowsayCtrl = $scope.cowsayCtrl = {};
   cowsayCtrl.title = 'moooo';
-  
+
   cowsayCtrl.updateCow = function(input) {
     $log.debug('cowsayCtrl.updateCow()');
     return '\n' + cowsay.say({text: input || 'gimme something to say'});
   };
 
-  cowsayCtrl.helloClick = function(input) {
-    $log.debug('cowsayCtrl.helloClick()');
+  cowsayCtrl.helloClick = function(input) { //the only part of this that works is the console log.
+    $log.debug('cowsayCtrl.helloClick(input)');
     $log.log(input);
+    return '\n' + cowsay.say({text: input});
   };
+
+  cowsayCtrl.count = function(index) {
+    return '\n' + cowsay.say({text:index += 1});
+  }; //this doesn't work at all. 
 }

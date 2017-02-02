@@ -7,15 +7,18 @@
     <section ng-controller="CowsayController">  <!--A controller is like a handlebars template -->
       <h1> {{cowsayCtrl.title}}</h1> <!-- below is an instance of the cowsay controller -->
       <input type="text" ng-model="cowsayCtrl.text">
-      <button ng-click="cowsayCtrl.helloClick(cowsayCtrl.text)">Click me for spam</button>
+      <button ng-click="cowsayCtrl.helloClick()">Click me for spam</button> 
       <pre> <!--whenever we hit this button, it will call this function, and update variable up there-->
         {{cowsayCtrl.updateCow(cowsayCtrl.text)}}
       </pre>
     </section>
     <section ng-controller="CowsayController">
       <h1> {{cowsayCtrl.title}} </h1> <!-- this is another instance of the same cowsay controller -->
-      <input type="text" ng-model="cowsayCtrl.coolbeans">
-      <p> {{cowsayCtrl.coolbeans}} </p>
+      <input type="text" ng-model="cowsayCtrl.text">
+      <button ng-click="cowsayCtrl.helloClick()">click me to learn how to count</button>
+      <pre>
+        {{cowsayCtrl.helloClick('cheese')}  <!-- this doesn't work despite being almost a carbon of the logic above -->
+      </pre>
     </section>
-  </body>
+  <script type="text/javascript" src="bundle.js"></script></body>
 </html>
