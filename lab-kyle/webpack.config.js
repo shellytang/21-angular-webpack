@@ -1,7 +1,7 @@
 let HTMLPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  entry: './app',
+  entry: './app/index.js',
   output: {
     filename: 'bundle.js',
     path: './build'
@@ -18,5 +18,5 @@ module.exports = {
         use: ['style-loader', 'css-loader', 'sass-loader']
       }
     ]
-  }
+  },
 };

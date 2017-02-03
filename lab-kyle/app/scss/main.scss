@@ -1,6 +1,18 @@
-$app-bg: #ccffcc;
+$app-bg: #ffffff;
 
 body {
   background-color: $app-bg;
   font-family: monospace;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+section {
+  font-size: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: rgb(149, 233, 255);
+  padding: 1em;
 }

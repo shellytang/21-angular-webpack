@@ -8,9 +8,17 @@
     <section ng-controller="CowsayController">
     <h1> {{cowsayCtrl.title}} </h1>
       <input type="text" ng-model="cowsayCtrl.text">
-      <button ng-click="cowsayCtrl.helloClick(cowsayCtrl.text)">click me for spam</button>
 
       <pre>
+        {{cowsayCtrl.updateCow(cowsayCtrl.text)}}
+      </pre>
+
+      <button ng-click="$emit('Save')">click me to save</button>
+    </section>
+
+    <section>
+      <h1> Saved Cowsay </h1>
+      <pre ng-controller="CowsayController">
         {{cowsayCtrl.updateCow(cowsayCtrl.text)}}
       </pre>
     </section>
