@@ -13,11 +13,14 @@ const cowsayApp = angular.module('cowsayApp', []);
 //controller is handling all functionality in the DOM
 //wherever ng-controller lives in the html, this stuff runs there depending on the {{variableName}}
 //  mounting .controller here - use this, and this is what it's called
+//the controller is instantiated inside the ng directive element.
 cowsayApp.controller('CowsayController', ['$log', '$scope', CowsayController]);
 
 //defines CowsayController and what properties are related to it
+//we use controllers to control scope, as well as add functionality within that scoped html element. this allows for modular commonJS functionality, and the ability to work on particular elements.
 function CowsayController($log, $scope){
   $log.debug('doing CowsayController stuff');
+  //setting up the initial state of our scope object. we attach properties to it
   let cowsayCtrl = $scope.cowsayCtrl = {};
   cowsayCtrl.title = 'render a cow';
 
