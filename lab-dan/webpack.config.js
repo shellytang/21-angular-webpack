@@ -11,6 +11,11 @@ module.exports = {
         test: /\.scss$/,
         use: ['style-loader', 'css-loader', 'sass-loader'], // this is a webpack 2 feature
       },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader'
+      }
     ],
   },
   plugins: [
@@ -20,9 +25,6 @@ module.exports = {
   ],
   resolve: {
     modules: ['node_modules']
-  },
-  node: {
-    fs: 'empty',
   },
   target: 'web'
 }

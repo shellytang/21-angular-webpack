@@ -7,9 +7,10 @@
 </head>
 <body>
   <div ng-controller="cowsayCtrl as main">
+    <h1 ng-bind="main.title"></h1>
     <label>What do you want to say?</label>
     <input type="text" ng-model="main.message"/>
-    <pre ng-bind="main.message"></pre>
+    <pre> {{ main.updateCow(main.message) }} </pre>
   </div>
 </body>
 </html>
