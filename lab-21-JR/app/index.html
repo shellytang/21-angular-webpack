@@ -1,11 +1,11 @@
-<!DOCTYPE html>  
+<!DOCTYPE html>
 <html>
   <head>
     <title>Cowsay Client</title>
   </head>
   <body ng-app="cowsayApp">
     {{2+2}}
-    <section ng-controller="CowsayController">
+    <section ng-controller="CowsayController as cowsayCtrl">
     <h1>{{cowsayCtrl.title}}</h1>
       <input type="text" ng-model="cowsayCtrl.text">
       <pre>
@@ -13,7 +13,7 @@
       </pre>
     </section>
 
-    <section ng-controller="CowsayController">
+    <section ng-controller="CowsayController as cowsayCtrl">
     <h1>{{cowsayCtrl.title2}}</h1>
       <input type="text" ng-model="cowsayCtrl.coolbeans">
       <p> {{cowsayCtrl.coolbeans}} </p>
