@@ -8,6 +8,7 @@ const cowsay = require('cowsay-browser');
 //define app and have angular know what the app-wide dependencies are for 'cowsayApp'
 //this is how javascript and html know what to look for
 //javascript variable and 'stringName'
+//angular.module takes two parameters, the empty array is create a module with these dependencies.
 const cowsayApp = angular.module('cowsayApp', []);
 
 //controller is handling all functionality in the DOM
@@ -15,6 +16,8 @@ const cowsayApp = angular.module('cowsayApp', []);
 //  mounting .controller here - use this, and this is what it's called
 //the controller is instantiated inside the ng directive element.
 cowsayApp.controller('CowsayController', ['$log', '$scope', CowsayController]);
+//$log and $scope are native SERVICES
+
 
 //defines CowsayController and what properties are related to it
 //we use controllers to control scope, as well as add functionality within that scoped html element. this allows for modular commonJS functionality, and the ability to work on particular elements.
