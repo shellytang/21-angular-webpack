@@ -4,7 +4,6 @@ require('./scss/main.scss');
 
 const angular = require('angular');
 const cowsay = require('cowsay-browser');
-
 //define app and have angular know what the app-wide dependencies are for 'cowsayApp'
 //this is how javascript and html know what to look for
 //javascript variable and 'stringName'
@@ -18,7 +17,6 @@ const cowsayApp = angular.module('cowsayApp', []);
 cowsayApp.controller('CowsayController', ['$log', CowsayController]);
 //$log and $scope are native SERVICES
 
-
 //defines CowsayController and what properties are related to it
 //we use controllers to control scope, as well as add functionality within that scoped html element. this allows for modular commonJS functionality, and the ability to work on particular elements.
 function CowsayController($log){
@@ -31,4 +29,22 @@ function CowsayController($log){
     return '\n' + cowsay.say({text: input || 'im gonna say cool stuff'});
   };
   this.title2 = 'basic text render';
+
+  this.arrayOfSubmissions = [];
+
+  this.submitCowState = function(saved){
+    let savedText = this.updateCow(saved);
+    this.arrayOfSubmissions.push(savedText);
+    console.log(this.arrayOfSubmissions);
+  };
+
+  this.undo = function(){
+    this.arrayOfSubmissions.pop();
+    this.savedText = this.arrayOfSubmissions.pop();
+    console.log(this.arrayOfSubmissions);
+  };
+  // this.onClick = function(input){
+  //   console.log(arrayOfSubmissions);
+  //   // return arrayOfSubmissions;
+  // };
 }
