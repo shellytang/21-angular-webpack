@@ -12,10 +12,11 @@
       <form ng-submit="cowsayCtrl.submit()">
         What does the cow say?
         <input type="text" ng-model="cowsayCtrl.text">
+        <!-- {{ cowsayCtrl.animals }} -->
+        <select ng-model="cowsayCtrl.current">
+          <option ng-repeat="animal in cowsayCtrl.animals" value="{{animal}}">{{animal}}</option>
+        </select>
         <input type="submit" value="Submit">
-        <!-- <select>
-          <option ng-repeat="cow in cowsayCtrl.history">{{cow}}</option>
-        </select> -->
         <pre>
           {{cowsayCtrl.updateCow(cowsayCtrl.text)}}
         </pre>

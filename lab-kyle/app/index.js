@@ -15,14 +15,21 @@ demoApp.controller('CowsayController', ['$log', CowsayController]);
 
 function CowsayController($log) {
   $log.debug('init CowsayController');
-  // let cowsayCtrl = $scope.cowsayCtrl = {};
-  this.title = 'Moooooo';
-  this.history = [];
-  this.mostRecent;
+
+  this.title = 'Moooooo'
+  // this.cowsayFile = ['default']
+  this.history = []
+  this.mostRecent
+  this.animals = null
+
+  cowsay.list((err, list) => {
+    this.animals = list
+    this.current = this.animals[0]
+  })
 
   this.updateCow = function(input) {
     $log.debug('cowsayCtrl.updateCow()');
-    return '\n' + cowsay.say({text: input || 'gimme something to say'});
+    return '\n' + cowsay.say({text: input || 'gimme something to say', f: this.current});
   }
 
   this.submit = function() {
