@@ -3,14 +3,29 @@
 <head>
   <meta charset="utf-8" />
   <title>Cowsay Angular</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
 </head>
 <body>
-  <div ng-controller="cowsayCtrl as main">
-    <h1 ng-bind="main.title"></h1>
-    <label>What do you want to say?</label>
-    <input type="text" ng-model="main.message"/>
-    <pre> {{ main.updateCow(main.message) }} </pre>
+  <div class="flex-wrap column" ng-controller="cowsayCtrl as main">
+    <section class="flex-item">
+      <h1 ng-bind="main.title"></h1>
+    </section>
+    <section class="flex-item">
+      <label>What do you want to say?</label>
+      <input type="text" ng-model="main.message"/>
+      <button type="button" name="copy" ng-click="main.copy()">Duplicate</button>
+      <button type="button" name="reset" ng-click="main.reset()">Reset</button>
+    </section>
+    <section class="flex-item">
+      <div class="flex-wrap row">
+        <pre class="flex-item" ng-bind="main.updateMsg()"></pre>
+        <pre class="flex-item" ng-bind="main.copyOutput"></pre>    
+      </div>
+    </section>
+    <section class="flex-item">
+      <p>
+        This app was created by Dan Peters. He's pretty awesome.
+      </p>
+    </section>
   </div>
 </body>
 </html>
