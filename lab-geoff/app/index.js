@@ -7,18 +7,18 @@ let angular = require('angular');
 
 let cowApp = angular.module('cowApp', []);
 
-cowApp.controller('CowSayController', ['$scope', CowSayController]);
+cowApp.controller('CowSayController', [CowSayController]);
 
-function CowSayController($scope) {
-  let cowSayCtrl = $scope.cowSayCtrl = {};
-  cowSayCtrl.title = 'COW SAY';
+function CowSayController() {
+  // let cowSayCtrl = this.cowSayCtrl = {};
+  this.title = 'COW SAY';
 
-  cowSayCtrl.update = function(input) {
+  this.update = function(input) {
     console.log('\n' + cowSay.say({text: input}));
     return '\n' + cowSay.say({text: input});
   };
 
-  cowSayCtrl.click = function(input) {
+  this.click = function(input) {
     console.log(input);
     console.log('click happened');
   };

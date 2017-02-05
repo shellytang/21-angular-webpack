@@ -5,12 +5,12 @@
     <title>Lab21-CowSay</title>
   </head>
   <body>
-    <section ng-controller="CowSayController">
-      <h1> {{cowSayCtrl.title}} </h1>
-      <input type="text" ng-model="cowSayCtrl.text">
-      <button ng-click="cowSayCtrl.click(cowSayCtrl.text)">Click Here</button>
+    <section ng-controller="CowSayController as cowSay">
+      <h1> {{cowSay.title}} </h1>
+      <input type="text" ng-model="cowSay.text">
+      <button ng-click="cowSay.click(cowSay.text)">Click Here</button>
       <pre>
-        {{cowSayCtrl.update(cowSayCtrl.text)}}
+        {{cowSay.update(cowSay.text)}}
       </pre>
     </section>
   </body>
