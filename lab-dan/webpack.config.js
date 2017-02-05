@@ -9,7 +9,7 @@ module.exports = {
     loaders: [
       {
         test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'], // this is a webpack 2 feature
+        use: ['style-loader', 'css-loader', 'postcss-loader','sass-loader'], // this is a webpack 2 feature
       },
       {
         test: /\.js$/,
