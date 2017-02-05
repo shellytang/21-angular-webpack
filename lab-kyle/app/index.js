@@ -7,7 +7,7 @@ require('./scss/main.scss')
 const cowsay = require('cowsay-browser');
 const angular = require('angular');
 
-// angular module
+// angular modulen
 const demoApp = angular.module('demoApp', []);
 
 // angular constructus
@@ -23,8 +23,9 @@ function CowsayController($log, $scope) {
     return '\n' + cowsay.say({text: input || 'gimme something to say'});
   };
 
-  cowsayCtrl.helloClick = function(input) {
-    $log.debug('cowsayCtrl.helloClick()')
-    $log.log(input);
-  };
+  $scope.$on('Save', function(data) {
+    $log.debug('cowsayCtrl.save');
+    $log.log('data: ', data);
+    cowsayCtrl.updateCow('test');
+  });
 }
