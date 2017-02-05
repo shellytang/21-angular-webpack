@@ -11,19 +11,21 @@ cowApp.controller('CowSayController', [CowSayController]);
 
 function CowSayController() {
   this.title = 'COW SAY';
-  this.message = '';
+  this.message = [];
 
   this.update = function(input) {
     return '\n' + cowSay.say({text: input});
   };
 
-  this.click = function(input) {
-    console.log(input);
+  this.click = function() {
     console.log('click happened');
+    // console.log(this.message);
+    // return '/n' + cowSay.say({text: this.message[0]});
   };
 
   this.submit = function(input) {
     console.log('submit happened');
-    this.message = input;
+    console.log(input);
+    this.message.push(input);
   };
 }
