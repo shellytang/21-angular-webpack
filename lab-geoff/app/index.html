@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html ng-app="cowApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Lab21-CowSay</title>
+  </head>
+  <body>
+    <section ng-controller="CowSayController">
+      <h1> {{cowSayCtrl.title}} </h1>
+      <input type="text" ng-model="cowSayCtrl.text">
+      <button ng-click="cowSayCtrl.click(cowSayCtrl.text)">Click Here</button>
+      <pre>
+        {{cowSayCtrl.update(cowSayCtrl.text)}}
+      </pre>
+    </section>
+  </body>
+</html>
