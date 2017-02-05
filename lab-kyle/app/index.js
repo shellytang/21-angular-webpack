@@ -16,7 +16,7 @@ demoApp.controller('CowsayController', ['$log', CowsayController]);
 function CowsayController($log) {
   $log.debug('init CowsayController');
 
-  this.title = 'Moooooo'
+  this.title = 'What does the cow say?'
   // this.cowsayFile = ['default']
   this.history = []
   this.mostRecent

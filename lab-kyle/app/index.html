@@ -9,8 +9,7 @@
       <h1> {{cowsayCtrl.title}} </h1>
 
 
-      <form ng-submit="cowsayCtrl.submit()">
-        What does the cow say?
+      <form ng-submit="cowsayCtrl.submit()" novalidate>
         <input type="text" ng-model="cowsayCtrl.text">
         <!-- {{ cowsayCtrl.animals }} -->
         <select ng-model="cowsayCtrl.current">
@@ -23,8 +22,7 @@
       </form>
     </section>
 
-    <section>
-      <h1> Saved Cowsay </h1>
+    <section ng-show="cowsayCtrl.history[0]">
       <pre>
         {{cowsayCtrl.mostRecent}}
       </pre>
