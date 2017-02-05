@@ -7,12 +7,15 @@ html {
   font-family: sans-serif;
 }
 
-body {
-  height: 100vh;
+html, body {
+  height: 100%;
+}
+
+h1, h2, h3, h4 {
+  text-align: center;
 }
 
 h1 {
-  text-align: center;
   font-size: 2em;
 }
 
@@ -25,14 +28,23 @@ label, input {
   margin-top: .4em;
   min-width: 20em;
   font-size: 1.2em;
-  // margin-right: .6em;
+  text-align: center;
 }
 
-.flex-wrap {
+select {
+  display: block;
+  margin: .4em auto;
+  margin-bottom: 2em
+}
+
+button {
+  margin: 1em .5em;
+  padding: .4em 1em;
+}
+
+.flex-box-wrapper {
+  min-height: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
 }
 
 .column {
@@ -45,9 +57,28 @@ label, input {
 }
 
 .flex-item {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
   margin: auto;
+}
+
+.defined-min-height {
+  min-height: 8em;
+}
+
+.defined-max-height {
+  max-height: 5em;
 }
 
 .form-section {
   margin-bottom: 1.2em;
+}
+
+.with-section-divider {
+  border-bottom: 1px solid;
+  width: 75%;
+  padding-bottom: 2em;
+  margin-bottom: 1em;
 }

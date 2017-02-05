@@ -45,4 +45,9 @@ function update ($log) {
     self.formOutput = defaultMsg
     self.copyOutput = ''
   }
+
+  self.getRandIndex = function () {
+    let result = Math.floor((Math.random()*100)) % self.creatures.length
+    return result
+  }
 }
