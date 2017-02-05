@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack",
-    "babel": "babel app -d build"
+    "babel": "babel app -d build",
+    "watch": "webpack-dev-server --inline --hot"
   },
   "dependencies": {
     "angular": "^1.6.1",
@@ -27,6 +28,7 @@
     "postcss-loader": "^1.2.2",
     "sass-loader": "^4.1.1",
     "style-loader": "^0.13.1",
-    "webpack": "^2.2.1"
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.3.0"
   }
 }

@@ -4,29 +4,45 @@ require('./scss/main.scss')
 
 angular.module('cowsayModule', [])
 
-angular.module('cowsayModule').controller('cowsayCtrl', [update])
+angular.module('cowsayModule').controller('cowsayCtrl', ['$log', update])
 
-function update () {
+function update ($log) {
   let self = this
+  let defaultMsg = 'Type something!'
+  let lastCopies = []
+  self.creatures = []
+  self.formOutput = defaultMsg
+  self.copyOutput = ''
 
-  self.title = 'Angular Dragon Speak'
+  cowsay.list((err, cows) => {
+    if (err) $log.error(err)
+    self.creatures = cows
+  })
+
+  self.title = 'Angular Creature Speak'
 
   self.updateMsg = function () {
-    let response = cowsay.say({
-      text : self.message || 'Say something!',
-      f: 'dragon'
+    self.formOutput = cowsay.say({
+      text : self.form.message || defaultMsg,
+      f: self.form.creature || 'dragon'
     })
-    return '\n' + response
   }
 
   self.copyOutput = null
 
   self.copy = function () {
-    self.copyOutput = self.updateMsg()
+    if (self.formOutput === defaultMsg && lastCopies.length === 0) return
+    lastCopies.push(angular.copy(self.copyOutput || ''))
+    self.copyOutput = angular.copy(self.formOutput || '')
+  }
+
+  self.undo = function () {
+    self.copyOutput = lastCopies.pop()
   }
 
   self.reset = function () {
-    self.copyOutput = null
-    self.message = null
+    self.form.message = ''
+    self.formOutput = defaultMsg
+    self.copyOutput = ''
   }
 }
