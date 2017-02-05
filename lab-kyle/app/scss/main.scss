@@ -1,10 +1,11 @@
 $app-bg: #ffffff;
 
 body {
+  align-items: center;
   background-color: $app-bg;
   font-family: monospace;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-around;
 }
 
@@ -16,4 +17,5 @@ section {
   justify-content: space-around;
   background-color: rgb(149, 233, 255);
   padding: 1em;
+  margin: 1em;
 }
