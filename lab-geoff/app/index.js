@@ -17,15 +17,21 @@ function CowSayController() {
     return '\n' + cowSay.say({text: input});
   };
 
-  this.click = function() {
+  // this.click = function(input) {
+  //   console.log('click happened');
+  //   console.log(input);
+  //   return '\n' + cowSay.say({text: input});
+  // };
+
+  this.createCowClick = function(input) {
     console.log('click happened');
-    // console.log(this.message);
-    // return '/n' + cowSay.say({text: this.message[0]});
+    console.log(input);
+    return '\n' + cowSay.say({text: input});
   };
 
   this.submit = function(input) {
     console.log('submit happened');
-    console.log(input);
     this.message.push(input);
+    console.log(this.message);
   };
 }
