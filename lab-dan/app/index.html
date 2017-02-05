@@ -17,7 +17,12 @@
         </div>
         <div class="form-section">
           <label>Who do you want to say it?</label>
-          <select name="creature" ng-model="main.form.creature" ng-init="main.form.creature = main.creatures[main.getRandIndex()]" ng-options="creature for creature in main.creatures"></select>
+          <select
+            name="creature"
+            ng-model="main.form.creature"
+            ng-init="main.form.creature = main.creatures[main.getRandIndex()]"
+            ng-options="creature for creature in main.creatures">
+          </select>
         </div>
         <div class="flex-item form-section">
           <button type="submit" name="submit" ng-click="main.updateMsg()">View Result</button>
@@ -34,7 +39,11 @@
     <h2>SAVED CREATURES</h2>
     <section class="flex-item">
       <div class="flex-box-wrapper row">
-        <pre class="flex-item" ng-repeat="save in main.saves track by $index" ng-bind="save"></pre>
+        <pre
+          class="flex-item"
+          ng-repeat="save in main.saves track by $index"
+          ng-bind="save">
+        </pre>
       </div>
     </section>
     <section class="flex-item">

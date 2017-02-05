@@ -28,22 +28,19 @@ function update ($log) {
     })
   }
 
-  self.copyOutput = null
-
   self.save = function () {
     if (self.formOutput === defaultMsg && self.saves.length === 0) return
     self.saves.push(angular.copy(self.formOutput || ''))
   }
 
   self.undo = function () {
-    self.copyOutput = self.saves.pop()
+    self.saves.pop()
   }
 
   self.reset = function () {
     self.saves = []
     self.form.message = ''
     self.formOutput = defaultMsg
-    self.copyOutput = ''
   }
 
   self.getRandIndex = function () {
