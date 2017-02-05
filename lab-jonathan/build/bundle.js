@@ -33426,7 +33426,7 @@ exports = module.exports = __webpack_require__(10)();
 
 
 // module
-exports.push([module.i, "body {\n  background-color: #7affa7; }\n\nselect {\n  margin-bottom: 2em; }\n\ninput {\n  display: block;\n  margin-bottom: 2em;\n  width: 20em; }\n\nbutton {\n  width: 21em;\n  border-radius: 5px;\n  display: block;\n  float: left; }\n\np {\n  padding-top: 20px; }\n\n.clearfix {\n  clear: both; }\n\npre {\n  border: 1px solid; }\n", ""]);
+exports.push([module.i, "body {\n  background-color: #7affa7; }\n\nselect {\n  margin-bottom: 2em; }\n\ninput {\n  display: block;\n  margin-bottom: 2em;\n  width: 20em; }\n\nbutton {\n  width: 21em;\n  border-radius: 5px;\n  display: block;\n  float: left; }\n\np {\n  padding-top: 20px; }\n\n.clearfix {\n  clear: both; }\n\npre {\n  border: 1px solid;\n  width: 20em;\n  margin-top: 5em; }\n", ""]);
 
 // exports
 
@@ -34243,7 +34243,7 @@ function CowsayController($log) {
 
   this.updateCow = function (input) {
     $log.debug('this.updateCow()');
-    return '\n' + cowsay.say({ text: input || 'gimme something to say' });
+    return '\n' + cowsay.say({ text: input || 'gimme something to say', f: this.currentCow });
   };
 
   this.speak = function (input) {
