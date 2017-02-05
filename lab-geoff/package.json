@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "mocha",
-    "build": "webpack"
+    "build": "webpack",
+    "watch": "webpack-dev-server --inline --hot"
   },
   "author": "geoff-cox",
   "license": "ISC",
