@@ -21,16 +21,20 @@
         </div>
         <div class="form-section">
           <button type="submit" name="submit" ng-click="main.updateMsg()">View Result</button>
-          <button type="button" name="save" ng-click="main.copy()">Save Result</button>
+          <button type="button" name="save" ng-click="main.save()">Save Result</button>
           <button type="button" name="undo" ng-click="main.undo()">Undo Save</button>
           <button type="button" name="reset" ng-click="main.reset()">Reset</button>
         </div>
       </form>
     </section>
+    <h2>RESULT</h2>
+    <section class="flex-item">
+      <pre class="flex-item" ng-bind="main.formOutput"></pre>
+    </section>
+    <h2>SAVED CREATURES</h2>
     <section class="flex-item">
       <div class="flex-wrap row">
-        <pre class="flex-item" ng-bind="main.formOutput"></pre>
-        <pre class="flex-item" ng-bind="main.copyOutput"></pre>
+        <pre class="flex-item" ng-repeat="save in main.saves track by $index" ng-bind="save"></pre>
       </div>
     </section>
     <section class="flex-item">

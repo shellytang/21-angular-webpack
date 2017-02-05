@@ -9,7 +9,7 @@ angular.module('cowsayModule').controller('cowsayCtrl', ['$log', update])
 function update ($log) {
   let self = this
   let defaultMsg = 'Type something!'
-  let lastCopies = []
+  self.saves = []
   self.creatures = []
   self.formOutput = defaultMsg
   self.copyOutput = ''
@@ -30,17 +30,17 @@ function update ($log) {
 
   self.copyOutput = null
 
-  self.copy = function () {
-    if (self.formOutput === defaultMsg && lastCopies.length === 0) return
-    lastCopies.push(angular.copy(self.copyOutput || ''))
-    self.copyOutput = angular.copy(self.formOutput || '')
+  self.save = function () {
+    if (self.formOutput === defaultMsg && self.saves.length === 0) return
+    self.saves.push(angular.copy(self.formOutput || ''))
   }
 
   self.undo = function () {
-    self.copyOutput = lastCopies.pop()
+    self.copyOutput = self.saves.pop()
   }
 
   self.reset = function () {
+    self.saves = []
     self.form.message = ''
     self.formOutput = defaultMsg
     self.copyOutput = ''
