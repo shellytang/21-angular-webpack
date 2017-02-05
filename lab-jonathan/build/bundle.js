@@ -33426,7 +33426,7 @@ exports = module.exports = __webpack_require__(10)();
 
 
 // module
-exports.push([module.i, "body {\n  background-color: #7affa7; }\n", ""]);
+exports.push([module.i, "body {\n  background-color: #7affa7; }\n\nselect {\n  margin-bottom: 2em; }\n\ninput {\n  display: block;\n  margin-bottom: 2em;\n  width: 20em; }\n\nbutton {\n  width: 21em;\n  border-radius: 5px;\n  display: block;\n  float: left; }\n\np {\n  padding-top: 20px; }\n\n.clearfix {\n  clear: both; }\n\npre {\n  border: 1px solid; }\n", ""]);
 
 // exports
 
@@ -34215,37 +34215,58 @@ function updateLink(linkElement, obj) {
 
 
 // require webpack assets
+
 __webpack_require__(2);
 
 // npm modules
-const cowsay = __webpack_require__(1);
-const angular = __webpack_require__(0);
-
-// app modules
+var cowsay = __webpack_require__(1);
+var angular = __webpack_require__(0);
 
 // angular module
-const demoApp = angular.module('demoApp', []);
+var demoApp = angular.module('demoApp', []);
 
 // angular constructus
 demoApp.controller('CowsayController', CowsayController);
 
-function CowsayController($log, $scope){
+function CowsayController($log) {
+  var _this = this;
+
   $log.debug('init CowsayController');
-  let cowsayCtrl = $scope.cowsayCtrl = {};
-  cowsayCtrl.title = 'Moooooo';
+  this.title = 'Cowsay Controller Lab';
+  this.history = [];
 
-  cowsayCtrl.updateCow = function(input){
-    $log.debug('cowsayCtrl.updateCow()');
-    return '\n' + cowsay.say({text: input || 'gimme something to say'});
+  cowsay.list(function (err, cowfiles) {
+    _this.cowfiles = cowfiles;
+    _this.currentCow = _this.cowfiles[0];
+    console.log('currentCow', _this.currentCow);
+  });
+
+  this.updateCow = function (input) {
+    $log.debug('this.updateCow()');
+    return '\n' + cowsay.say({ text: input || 'gimme something to say' });
   };
 
-  cowsayCtrl.helloClick = function(input){
-    $log.debug('cowsayCtrl.helloClick()');
-    $log.log(input);
+  this.speak = function (input) {
+    $log.debug('this.updateCow()');
+    this.spoken = this.updateCow(input);
+    this.history.push(this.spoken);
+    console.log('this.history', this.history);
   };
 
+  this.undo = function () {
+    $log.debug('this.undo()');
+    console.log('this.history', this.history);
+    this.history.pop();
+    this.spoken = this.history.pop() || '';
+    console.log('spoken', this.spoken);
+  };
 }
+// this.helloClick = function(input){
+//   $log.debug('cowsayCtrl.helloClick()');
+//   $log.log(input);
+// };
 
+// }
 
 /***/ })
 /******/ ]);

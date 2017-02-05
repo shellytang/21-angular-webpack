@@ -9,9 +9,13 @@ module.exports = {
   module: {
     loaders: [
       {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: ['babel-loader']
+      },
+      {
         test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader']// webpack 2.x
-        // load: 'style!css!sass' webpack 1.x
+        use: ['style-loader', 'css-loader', 'sass-loader']
       }
     ]
   },

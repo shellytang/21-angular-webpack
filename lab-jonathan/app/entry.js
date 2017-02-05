@@ -4,30 +4,49 @@
 require('./scss/main.scss');
 
 // npm modules
-const cowsay = require('cowsay-browser');
-const angular = require('angular');
-
-// app modules
+let cowsay = require('cowsay-browser');
+let angular = require('angular');
 
 // angular module
-const demoApp = angular.module('demoApp', []);
+let demoApp = angular.module('demoApp', []);
 
 // angular constructus
 demoApp.controller('CowsayController', CowsayController);
 
-function CowsayController($log, $scope){
+function CowsayController($log){
   $log.debug('init CowsayController');
-  let cowsayCtrl = $scope.cowsayCtrl = {};
-  cowsayCtrl.title = 'Moooooo';
+  this.title = 'Cowsay Controller Lab';
+  this.history = [];
 
-  cowsayCtrl.updateCow = function(input){
-    $log.debug('cowsayCtrl.updateCow()');
+  cowsay.list((err, cowfiles) => {
+    this.cowfiles = cowfiles;
+    this.currentCow = this.cowfiles[0];
+    console.log('currentCow', this.currentCow);
+  });
+
+  this.updateCow = function(input){
+    $log.debug('this.updateCow()');
     return '\n' + cowsay.say({text: input || 'gimme something to say'});
   };
 
-  cowsayCtrl.helloClick = function(input){
-    $log.debug('cowsayCtrl.helloClick()');
-    $log.log(input);
+  this.speak = function(input){
+    $log.debug('this.updateCow()');
+    this.spoken = this.updateCow(input);
+    this.history.push(this.spoken);
+    console.log('this.history', this.history);
   };
 
+  this.undo = function(){
+    $log.debug('this.undo()');
+    console.log('this.history', this.history);
+    this.history.pop();
+    this.spoken = this.history.pop() || '';
+    console.log('spoken', this.spoken);
+  };
 }
+  // this.helloClick = function(input){
+  //   $log.debug('cowsayCtrl.helloClick()');
+  //   $log.log(input);
+  // };
+
+// }
