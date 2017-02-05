@@ -10,16 +10,20 @@ let cowApp = angular.module('cowApp', []);
 cowApp.controller('CowSayController', [CowSayController]);
 
 function CowSayController() {
-  // let cowSayCtrl = this.cowSayCtrl = {};
   this.title = 'COW SAY';
+  this.message = '';
 
   this.update = function(input) {
-    console.log('\n' + cowSay.say({text: input}));
     return '\n' + cowSay.say({text: input});
   };
 
   this.click = function(input) {
     console.log(input);
     console.log('click happened');
+  };
+
+  this.submit = function(input) {
+    console.log('submit happened');
+    this.message = input;
   };
 }
