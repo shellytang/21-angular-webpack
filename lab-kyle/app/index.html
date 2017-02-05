@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="demoApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Cowsay Client</title>
+  </head>
+  <body>
+    <section ng-controller="CowsayController">
+    <h1> {{cowsayCtrl.title}} </h1>
+      <input type="text" ng-model="cowsayCtrl.text">
+
+      <pre>
+        {{cowsayCtrl.updateCow(cowsayCtrl.text)}}
+      </pre>
+
+      <button ng-click="$emit('Save')">click me to save</button>
+      <h1> Saved Cowsay </h1>
+      <pre ng-controller="CowsayController">
+        {{cowsayCtrl.updateCow(cowsayCtrl.text)}}
+      </pre>
+    </section>
+
+    <section ng-controller="CowsayController">
+      <h1> {{cowsayCtrl.title}} </h1>
+      <input type="text" ng-model="cowsayCtrl.coolbeans">
+      <p> {{cowsayCtrl.coolbeans}} </p>
+    </section>
+  </body>
+</html>
