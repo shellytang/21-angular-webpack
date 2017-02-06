@@ -1,20 +1,22 @@
-const webpackConfig = require('./webpack.config')
-webpackConfig.entry = {}
+'use strict';
+
+const webpackConfig = require('./webpack.config.js');
+webpackConfig.entry = function(){return {}};
 
 module.exports = function(config) {
   config.set({
     webpack: webpackConfig,
-    basepath: '',
-    frameworks: ['Jasmine'],
+    basePath: '',
+    frameworks: ['jasmine'],
     files: [
       'test/**/*-test.js'
     ],
     exclude: [
     ],
     preprocessors: {
-      'test/**/*-test.js' : ['webpack']
+      'test/**/*-test.js': ['webpack']
     },
-    reporters: ['progress'],
+    reporters: ['mocha'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
@@ -22,5 +24,5 @@ module.exports = function(config) {
     browsers: ['PhantomJS'],
     singleRun: false,
     concurrency: Infinity
-  })
-}
+  });
+};

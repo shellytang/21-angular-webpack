@@ -8,7 +8,7 @@ const cowsay = require('cowsay-browser');
 const angular = require('angular');
 
 // angular modulen
-const demoApp = angular.module('demoApp', []);
+const demoApp = angular.module('cowsayApp', []);
 
 // angular constructus
 demoApp.controller('CowsayController', ['$log', CowsayController]);
