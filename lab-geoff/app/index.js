@@ -9,9 +9,22 @@ let cowApp = angular.module('cowApp', []);
 
 cowApp.controller('CowSayController', [CowSayController]);
 
+
 function CowSayController() {
   this.title = 'COW SAY';
-  this.message = [];
+  this.cowOptions = [];
+
+  cowSay.list((err, list) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    console.log(list);
+    list.forEach(item => {
+      this.cowOptions.push(item);
+    });
+  });
+  // this.speech = 'Moo!';
 
   this.update = function(input) {
     return '\n' + cowSay.say({text: input});
@@ -28,10 +41,10 @@ function CowSayController() {
     console.log(input);
     return '\n' + cowSay.say({text: input});
   };
-
-  this.submit = function(input) {
-    console.log('submit happened');
-    this.message.push(input);
-    console.log(this.message);
-  };
+  //
+  // this.submit = function(input) {
+  //   console.log('submit happened');
+  //   this.message.push(input);
+  //   console.log(this.message);
+  // };
 }
