@@ -11,7 +11,7 @@
 
       <form ng-submit="cowsayCtrl.submit()" novalidate>
         <input type="text" ng-model="cowsayCtrl.text">
-        <!-- {{ cowsayCtrl.animals }} -->
+
         <select ng-model="cowsayCtrl.current">
           <option ng-repeat="animal in cowsayCtrl.animals" value="{{animal}}">{{animal}}</option>
         </select>

@@ -17,14 +17,13 @@ function CowsayController($log) {
   $log.debug('init CowsayController');
 
   this.title = 'What does the cow say?'
-  // this.cowsayFile = ['default']
   this.history = []
   this.mostRecent
   this.animals = null
 
   cowsay.list((err, list) => {
     this.animals = list
-    this.current = this.animals[0]
+    this.current = this.animals[8]
   })
 
   this.updateCow = function(input) {
@@ -35,7 +34,8 @@ function CowsayController($log) {
   this.submit = function() {
     $log.debug('cowsayCtrl.submit()')
     if (this.text) {
-      this.history.push(this.updateCow(this.text))
+      this.newCow = this.updateCow(this.text)
+      this.history.push(this.newCow)
       this.mostRecent = this.history[this.history.length - 1]
       this.text = ''
     }
