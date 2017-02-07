@@ -6,17 +6,20 @@
   </head>
   <body>
     <section ng-controller="CowSayController as cowSay">
-      <form ng-submit="cowSay.submit(cowSay.text)">
+      <form novalidate ng-submit="cowSay.save()">
         <input type="text" ng-model="cowSay.text">
         <input type="submit" value="Save">
         <select>
-          <option ng-repeat="option in cowSay.cowOptions">
+          <option ng-repeat="option in cowSay.cowOptions" ng-model="cowSay.custom">
             {{option}}
           </option>
         </select>
         <pre>
           {{cowSay.title}}
           {{cowSay.update(cowSay.text)}}
+        </pre>
+        <pre>
+          {{cowSay.saved}}
         </pre>
       </form>
       <!-- <form>
@@ -40,11 +43,11 @@
     </section> -->
     <!-- <section ng-controller="CowSayController as cowSayChild"> -->
       <!-- <button ng-click="cowSayChild.createCowClick(cowSay.text)">Create Cow</button> -->
-      <button ng-click="cowSay.createCowClick(cowSay.text)">Create Cow</button>
+      <!-- <button ng-click="cowSay.createCowClick(cowSay.text)">Create Cow</button>
       <pre>
-        {{cowSay.createCowClick(cowSay.text)}}
+        {{cowSay.createCowClick(cowSay.text)}} -->
         <!-- {{cowSayChild.createCowClick(cowSay.text)}} -->
-      </pre>
+      <!-- </pre> -->
     </section>
   </body>
 </html>

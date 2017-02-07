@@ -13,34 +13,40 @@ cowApp.controller('CowSayController', [CowSayController]);
 function CowSayController() {
   this.title = 'COW SAY';
   this.cowOptions = [];
+  this.saved = '';
 
   cowSay.list((err, list) => {
     if (err) {
       console.error(err);
       return;
     }
-    console.log(list);
     list.forEach(item => {
       this.cowOptions.push(item);
     });
   });
-  // this.speech = 'Moo!';
 
   this.update = function(input) {
-    return '\n' + cowSay.say({text: input});
+    return '\n' + cowSay.say({
+      text: input || 'Moo!',
+      f: this.custom,
+    });
   };
 
+  this.save = function() {
+    console.log(this.text);
+    this.saved = '\n' + cowSay.say({text: this.text});
+  };
   // this.click = function(input) {
   //   console.log('click happened');
   //   console.log(input);
   //   return '\n' + cowSay.say({text: input});
   // };
 
-  this.createCowClick = function(input) {
-    console.log('click happened');
-    console.log(input);
-    return '\n' + cowSay.say({text: input});
-  };
+  // this.createCowClick = function(input) {
+  //   console.log('click happened');
+  //   console.log(input);
+  //   return '\n' + cowSay.say({text: input});
+  // };
   //
   // this.submit = function(input) {
   //   console.log('submit happened');
