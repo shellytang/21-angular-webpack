@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha",
+    "test": "karma start --single-run",
     "build": "webpack",
     "watch": "webpack-dev-server --inline --hot"
   },
@@ -23,6 +23,7 @@
     "cowsay-browser": "^1.1.8",
     "css-loader": "^0.26.1",
     "html-webpack-plugin": "^2.28.0",
+    "jasmine": "^2.5.3",
     "jasmine-core": "^2.5.2",
     "karma": "^1.4.1",
     "karma-jasmine": "^1.1.0",
