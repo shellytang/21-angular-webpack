@@ -14,6 +14,7 @@ function CowSayController() {
   this.title = 'COW SAY';
   this.cowOptions = [];
   this.saved = '';
+  this.custom = 'default';
 
   cowSay.list((err, list) => {
     if (err) {
@@ -28,13 +29,12 @@ function CowSayController() {
   this.update = function(input) {
     return '\n' + cowSay.say({
       text: input || 'Moo!',
-      f: this.custom,
+      f: this.custom.trim(),
     });
   };
 
   this.save = function() {
-    console.log(this.text);
-    this.saved = '\n' + cowSay.say({text: this.text});
+    this.saved = '\n' + cowSay.say({text: this.text, f: this.custom.trim()});
   };
   // this.click = function(input) {
   //   console.log('click happened');

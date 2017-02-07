@@ -9,8 +9,8 @@
       <form novalidate ng-submit="cowSay.save()">
         <input type="text" ng-model="cowSay.text">
         <input type="submit" value="Save">
-        <select>
-          <option ng-repeat="option in cowSay.cowOptions" ng-model="cowSay.custom">
+        <select ng-model="cowSay.custom">
+          <option ng-repeat="option in cowSay.cowOptions">
             {{option}}
           </option>
         </select>
