@@ -39,32 +39,10 @@ function CowSayController() {
       f: this.custom.trim()
     });
     this.savedCows.push(this.saved);
-    console.log('save click happened');
   };
 
   this.undo = function() {
-    // console.log(this.savedCows);
-    console.log('undo click happened');
     this.savedCows.pop();
-    console.log(this.savedCows);
     this.saved = this.savedCows[this.savedCows.length - 1];
-    // console.log(this.saved);
   };
-  // this.click = function(input) {
-  //   console.log('click happened');
-  //   console.log(input);
-  //   return '\n' + cowSay.say({text: input});
-  // };
-
-  // this.createCowClick = function(input) {
-  //   console.log('click happened');
-  //   console.log(input);
-  //   return '\n' + cowSay.say({text: input});
-  // };
-  //
-  // this.submit = function(input) {
-  //   console.log('submit happened');
-  //   this.message.push(input);
-  //   console.log(this.message);
-  // };
 }
