@@ -9,11 +9,11 @@ let cowApp = angular.module('cowApp', []);
 
 cowApp.controller('CowSayController', [CowSayController]);
 
-
 function CowSayController() {
   this.title = 'COW SAY';
   this.cowOptions = [];
   this.saved = '';
+  this.savedCows = [];
   this.custom = 'default';
 
   cowSay.list((err, list) => {
@@ -34,7 +34,21 @@ function CowSayController() {
   };
 
   this.save = function() {
-    this.saved = '\n' + cowSay.say({text: this.text, f: this.custom.trim()});
+    this.saved = '\n' + cowSay.say({
+      text: this.text,
+      f: this.custom.trim()
+    });
+    this.savedCows.push(this.saved);
+    console.log('save click happened');
+  };
+
+  this.undo = function() {
+    // console.log(this.savedCows);
+    console.log('undo click happened');
+    this.savedCows.pop();
+    console.log(this.savedCows);
+    this.saved = this.savedCows[this.savedCows.length - 1];
+    // console.log(this.saved);
   };
   // this.click = function(input) {
   //   console.log('click happened');

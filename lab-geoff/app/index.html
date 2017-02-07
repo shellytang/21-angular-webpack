@@ -18,10 +18,11 @@
           {{cowSay.title}}
           {{cowSay.update(cowSay.text)}}
         </pre>
-        <pre>
-          {{cowSay.saved}}
-        </pre>
       </form>
+      <pre>
+        {{cowSay.saved}}
+      </pre>
+      <button ng-click="cowSay.undo()">Undo</button>
       <!-- <form>
         <button ng-click="cowSay.click()">Create Cow</button>
         <pre>
