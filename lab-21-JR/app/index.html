@@ -4,21 +4,24 @@
     <title>Cowsay Client</title>
   </head>
   <body ng-app="cowsayApp">
-    {{2+2}}
     <section ng-controller="CowsayController as cowsayCtrl"> <!--first instance of CowsayController giving "as cowsayCtrl" and its properties a place to live in html -->
     <h1>{{cowsayCtrl.title}}</h1>
-      <input type="text" ng-model="cowsayCtrl.text">
+      <input type="text" ng-model="cowsayCtrl.text"> <!--ng-model allows us to create js object properties on the fly and update them within the controller's scope-->
+      <select ng-model="cowsayCtrl.selectedOption">
+        <option ng-repeat="animal in cowsayCtrl.listOfCows" value={{animal}}>{{animal}}
+        </option>
+      </select>
       <pre>
-        {{cowsayCtrl.updateCow(cowsayCtrl.text)}}
+        {{cowsayCtrl.updateCow()}}
       </pre>
-      <form ng-submit="cowsayCtrl.submitCowState(cowsayCtrl.text)">
+      <form ng-submit="cowsayCtrl.submitCowState()">
         <button type="submit">click me to save the text
         </button>
-        <button ng-click="cowsayCtrl.undo()">this undo button reverts back to last indice in the saved array
-        </button>
       </form>
-      <pre>
-        {{cowsayCtrl.updateCow(arrayOfSubmissions)}}
+      <button ng-click="cowsayCtrl.undo()">this undo button reverts back to last indice in the saved array
+      </button>
+      <pre ng-show="cowsayCtrl.arrayOfSubmissions.length"> <!--ng-show evaluates an expression to see if it's true/false-->
+        {{cowsayCtrl.currentCow}}
       </pre>
     </section>
 

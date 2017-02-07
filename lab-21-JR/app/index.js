@@ -23,28 +23,30 @@ function CowsayController($log){
   $log.debug('doing CowsayController stuff');
   //setting up the initial state of our scope object. we attach properties to it
   this.title = 'render a cow';
+  this.currentCow = '';
 
-  this.updateCow = function(input){
+  this.updateCow = function(){
     $log.debug('cowsayCtrl.updateCow stuff');
-    return '\n' + cowsay.say({text: input || 'im gonna say cool stuff'});
+    return '\n' + cowsay.say({text: this.text || 'im gonna say cool stuff', f: this.selectedOption || 'tux'});
   };
   this.title2 = 'basic text render';
 
   this.arrayOfSubmissions = [];
 
-  this.submitCowState = function(saved){
-    let savedText = this.updateCow(saved);
+  this.submitCowState = function(){
+    let savedText = this.updateCow(this.text);
     this.arrayOfSubmissions.push(savedText);
+    this.currentCow = this.arrayOfSubmissions[this.arrayOfSubmissions.length - 1];
     console.log(this.arrayOfSubmissions);
   };
 
   this.undo = function(){
     this.arrayOfSubmissions.pop();
-    this.savedText = this.arrayOfSubmissions.pop();
+    this.currentCow = this.arrayOfSubmissions[this.arrayOfSubmissions.length - 1];
     console.log(this.arrayOfSubmissions);
   };
-  // this.onClick = function(input){
-  //   console.log(arrayOfSubmissions);
-  //   // return arrayOfSubmissions;
-  // };
+
+  cowsay.list((err, cows) => {
+    this.listOfCows = cows;
+  });
 }
