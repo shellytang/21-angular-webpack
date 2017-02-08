@@ -11,9 +11,9 @@ const angular = require('angular');
 const demoApp = angular.module('cowsayApp', []);
 
 // angular constructus
-demoApp.controller('CowsayController', ['$log', CowsayController]);
+demoApp.controller('CowsayController', ['$log', '$location', '$anchorScroll', CowsayController]);
 
-function CowsayController($log) {
+function CowsayController($log, $location, $anchorScroll) {
   $log.debug('init CowsayController');
 
   this.title = 'What does the cow say?'
@@ -38,6 +38,8 @@ function CowsayController($log) {
       this.history.push(this.newCow)
       this.mostRecent = this.history[this.history.length - 1]
       this.text = ''
+      $location.hash('new')
+      $anchorScroll()
     }
   }
 
