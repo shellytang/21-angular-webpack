@@ -20,6 +20,7 @@ describe('Cowsay Controller', function() {
 
     it('history property should equal an empty array', () => {
       expect(Array.isArray(this.cowsayCtrl.history)).toBe(true)
+      expect(this.cowsayCtrl.history.length).toBe(0)
     })
 
     it('should have a list of animals', () => {
@@ -49,12 +50,12 @@ describe('Cowsay Controller', function() {
   })
 
   describe('#undo', () => {
+    beforeEach(() => {
+      this.cowsayCtrl.history.push('\n' + cowsay.say({text: 'Hello', f: this.cowsayCtrl.current}))
+      this.cowsayCtrl.history.push('\n' + cowsay.say({text: 'Goodbye', f: this.cowsayCtrl.current}))
+    })
     it('should remove a cow from history', () => {
       let expected = '\n' + cowsay.say({text: 'Hello', f: this.cowsayCtrl.current})
-      this.cowsayCtrl.text = 'Hello'
-      this.cowsayCtrl.submit()
-      this.cowsayCtrl.text = 'Goodbye'
-      this.cowsayCtrl.submit()
       expect(this.cowsayCtrl.history.length).toBe(2)
       this.cowsayCtrl.undo()
       expect(this.cowsayCtrl.history[0]).toEqual(expected)
