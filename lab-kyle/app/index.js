@@ -36,7 +36,7 @@ function CowsayController($log, $location, $anchorScroll) {
       this.history.push(this.newCow)
       this.mostRecent = this.history[this.history.length - 1]
       this.text = ''
-      $location.hash('new')
+      $location.hash('current')
       $anchorScroll()
     }
   }
