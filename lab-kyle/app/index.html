@@ -11,7 +11,7 @@
 
       <section>
 
-        <form ng-submit="cowsayCtrl.submit()" novalidate>
+        <form ng-submit="cowsayCtrl.submit(cowsayCtrl.text)" novalidate>
           <input type="text" ng-model="cowsayCtrl.text" ng-required="required">
 
           <select ng-model="cowsayCtrl.current">

@@ -29,16 +29,16 @@ function CowsayController($log, $location, $anchorScroll) {
     return '\n' + cowsay.say({text: input || 'gimme something to say', f: this.current});
   }
 
-  this.submit = function() {
+  this.submit = function(input) {
     $log.debug('cowsayCtrl.submit()')
-    if (this.text) {
-      this.newCow = this.updateCow(this.text)
-      this.history.push(this.newCow)
-      this.mostRecent = this.history[this.history.length - 1]
-      this.text = ''
-      $location.hash('current')
-      $anchorScroll()
-    }
+    // if (this.text) {
+    this.newCow = this.updateCow(input)
+    this.history.push(this.newCow)
+    this.mostRecent = this.history[this.history.length - 1]
+    this.text = ''
+    $location.hash('current')
+    $anchorScroll()
+    // }
   }
 
   this.undo = function() {
