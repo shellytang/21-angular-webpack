@@ -5,10 +5,10 @@
     <title>Cowsay Client</title>
   </head>
   <body ng-controller="CowsayController as cowsayCtrl">
+
+    <h1> {{cowsayCtrl.title}} </h1>
+
     <section>
-      <h1> {{cowsayCtrl.title}} </h1>
-
-
       <form ng-submit="cowsayCtrl.submit()" novalidate>
         <input type="text" ng-model="cowsayCtrl.text">
 

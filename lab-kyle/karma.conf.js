@@ -1,7 +1,7 @@
 'use strict';
 
 const webpackConfig = require('./webpack.config.js');
-webpackConfig.entry = function(){return {}};
+webpackConfig.entry = function() { return {} };
 
 module.exports = function(config) {
   config.set({
