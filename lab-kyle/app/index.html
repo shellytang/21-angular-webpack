@@ -4,33 +4,35 @@
     <meta charset="utf-8">
     <title>Cowsay Client</title>
   </head>
-  <body ng-controller="CowsayController as cowsayCtrl">
+  <body>
 
-    <h1> {{cowsayCtrl.title}} </h1>
+    <main ng-controller="CowsayController as cowsayCtrl" ng-cloak>
+      <h1> {{cowsayCtrl.title}} </h1>
 
-    <section>
+      <section>
 
-      <form ng-submit="cowsayCtrl.submit()" novalidate>
-        <input type="text" ng-model="cowsayCtrl.text">
+        <form ng-submit="cowsayCtrl.submit()" novalidate>
+          <input type="text" ng-model="cowsayCtrl.text" ng-required="required">
 
-        <select ng-model="cowsayCtrl.current">
-          <option ng-repeat="animal in cowsayCtrl.animals" value="{{animal}}">{{animal}}</option>
-        </select>
-        <input type="submit" value="Submit">
-      </form>
+          <select ng-model="cowsayCtrl.current">
+            <option ng-repeat="animal in cowsayCtrl.animals" value="{{animal}}">{{animal}}</option>
+          </select>
+          <input type="submit" value="Submit">
+        </form>
 
-      <pre>
-        {{cowsayCtrl.updateCow(cowsayCtrl.text)}}
-      </pre>
+        <pre>
+          {{cowsayCtrl.updateCow(cowsayCtrl.text)}}
+        </pre>
 
-    </section>
+      </section>
 
-    <section id="current" ng-show="cowsayCtrl.history[0]">
-      <pre>
-        {{cowsayCtrl.mostRecent}}
-      </pre>
-      <button ng-click="cowsayCtrl.undo()">click me to undo</button>
-    </section>
+      <section id="current" ng-show="cowsayCtrl.history[0]">
+        <pre>
+          {{cowsayCtrl.mostRecent}}
+        </pre>
+        <button ng-click="cowsayCtrl.undo()">click me to undo</button>
+      </section>
+    </main>
 
   </body>
 </html>
