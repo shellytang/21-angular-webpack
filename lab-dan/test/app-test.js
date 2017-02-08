@@ -2,7 +2,7 @@
 
 require('./lib/test-setup.js')
 const angular = require('angular')
-const cowsay = require('cowsay')
+const cowsay = require('cowsay-browser')
 const defaultMsg = 'Type something!'
 
 describe('Cowsay Controller', () => {

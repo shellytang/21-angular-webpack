@@ -1,12 +1,12 @@
-const webpackConfig = require('./webpack.config.js')
-webpackConfig.entry = {}
+const webpack = require('./webpack.config.js')
+delete webpack.entry
 
 // Karma configuration
 // Generated on Mon Feb 06 2017 12:23:36 GMT-0800 (PST)
 
 module.exports = function(config) {
   config.set({
-    webpack: webpackConfig,
+    webpack,
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
@@ -38,7 +38,7 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['mocha'],
 
 
     // web server port
@@ -60,8 +60,15 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'],
+    browsers: ['Chrome', 'Chrome_without_security'],
 
+    // https://github.com/karma-runner/karma-chrome-launcher
+    customLaunchers: {
+      Chrome_without_security: {
+        base: 'Chrome',
+        flags: ['__disable-web-security']
+      }
+    },
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
