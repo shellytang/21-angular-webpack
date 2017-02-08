@@ -19,7 +19,6 @@ function CowsayController($log, $location, $anchorScroll) {
   this.title = 'What does the cow say?'
   this.history = []
   this.mostRecent
-  this.animals = null
 
   cowsay.list((err, list) => {
     this.animals = list
