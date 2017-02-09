@@ -2,6 +2,8 @@ $primary-color: pink;
 
 body {
     background-color: $primary-color;
+    display: flex;
+    justify-content: space-around;
 }
 
 pre {
