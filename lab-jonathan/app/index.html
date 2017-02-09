@@ -4,20 +4,38 @@
     <title> Cowsay Client </title>
   </head>
   <body>
-    <section ng-controller="CowsayController">
-    <h1> {{cowsayCtrl.title}} </h1>
-      <input type="text" ng-model="cowsayCtrl.text">
-      <button ng-click="cowsayCtrl.helloClick(cowsayCtrl.text)"> click me for spam </button>
+    <section ng-controller="CowsayController as cowsayCtrl">
+      <h1> {{cowsayCtrl.title}} </h1>
 
-      <pre>
-         {{cowsayCtrl.updateCow(cowsayCtrl.text)}}
+      <!-- populate the cowsay list -->
+      <h2>Choose Your Cow Type</h2>
+      <select ng-model="cowsayCtrl.currentCow">
+        <option ng-repeat="cowfile in cowsayCtrl.cowfiles" value="{{cowfile}}">{{cowfile}}</option>
+      </select>
+
+       <!--make the cow speak -->
+      <form ng-submit="cowsayCtrl.speak(cowsayCtrl.text)">
+        <input type="text" ng-model="cowsayCtrl.text" name="text" placeholder="Make cow say something stupid...">
+        <button class="clearfix" type="submit"> SPEAK, YO</button>
+
+        <p class="clearfix">Or, if you said something really stupid...</p>
+
+        <!-- undo what the cow said -->
+        <button class="clearfix" type="button" ng-click="cowsayCtrl.undo()" > UNDO THIS STUFF</button>
+
+      </form>
+
+      <pre class="clearfix">
+        {{cowsayCtrl.updateCow(cowsayCtrl.text)}}
       </pre>
+
+
+      <h2>Saved Crap the Cow Said</h2>
+      <p ng-if="!cowsayCtrl.spoken"> Gettin Rid of Yo Stuff </p>
+      <p ng-hide="cowsayCtrl.spoken"> Go on, say something, stupid</p>
+      <pre ng-show="cowsayCtrl.spoken">{{cowsayCtrl.spoken}}</pre>
+
     </section>
 
-    <section ng-controller="CowsayController">
-    <h1> {{cowsayCtrl.title}} </h1>
-      <input type="text" ng-model="cowsayCtrl.coolbeans">
-      <p> {{cowsayCtrl.coolbeans}} </p>
-    </section>
   </body>
 </html>

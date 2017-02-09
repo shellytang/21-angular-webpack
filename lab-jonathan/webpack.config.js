@@ -1,17 +1,21 @@
 let HTMLPlugin = require ('html-webpack-plugin')
 
 module.exports = {
-  entry: './app/entry.js',
+  entry: `${__dirname}/app/entry.js`,
   output: {
     filename: 'bundle.js',
-    path: './build'
+    path: `${__dirname}/build`,
   },
   module: {
     loaders: [
       {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: ['babel-loader']
+      },
+      {
         test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader']// webpack 2.x
-        // load: 'style!css!sass' webpack 1.x
+        use: ['style-loader', 'css-loader', 'sass-loader']
       }
     ]
   },
