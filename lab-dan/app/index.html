@@ -5,20 +5,45 @@
   <title>Cowsay Angular</title>
 </head>
 <body>
-  <div class="flex-wrap column" ng-controller="cowsayCtrl as main">
-    <section class="flex-item">
+  <div class="flex-box-wrapper column" ng-controller="cowsayCtrl as main">
+    <section class="flex-item defined-max-height">
       <h1 ng-bind="main.title"></h1>
     </section>
-    <section class="flex-item">
-      <label>What do you want to say?</label>
-      <input type="text" ng-model="main.message"/>
-      <button type="button" name="copy" ng-click="main.copy()">Duplicate</button>
-      <button type="button" name="reset" ng-click="main.reset()">Reset</button>
+    <section class="flex-item defined-height with-section-divider">
+      <form novalidate>
+        <div class="form-section">
+          <label>What do you want to say?</label>
+          <input type="text" ng-model="main.form.message"/>
+        </div>
+        <div class="form-section">
+          <label>Who do you want to say it?</label>
+          <select
+            name="creature"
+            ng-model="main.form.creature"
+            ng-init="main.form.creature = main.creatures[main.getRandIndex()]"
+            ng-options="creature for creature in main.creatures">
+          </select>
+        </div>
+        <div class="flex-item form-section">
+          <button type="submit" name="submit" ng-click="main.updateMsg()">View Result</button>
+          <button type="button" name="save" ng-click="main.save()">Save Result</button>
+          <button type="button" name="undo" ng-click="main.undo()">Undo Save</button>
+          <button type="button" name="reset" ng-click="main.reset()">Reset</button>
+        </div>
+      </form>
     </section>
+    <h2>RESULT</h2>
+    <section class="flex-item defined-height with-section-divider">
+      <pre class="flex-item" ng-bind="main.formOutput"></pre>
+    </section>
+    <h2>SAVED CREATURES</h2>
     <section class="flex-item">
-      <div class="flex-wrap row">
-        <pre class="flex-item" ng-bind="main.updateMsg()"></pre>
-        <pre class="flex-item" ng-bind="main.copyOutput"></pre>    
+      <div class="flex-box-wrapper row">
+        <pre
+          class="flex-item"
+          ng-repeat="save in main.saves track by $index"
+          ng-bind="save">
+        </pre>
       </div>
     </section>
     <section class="flex-item">

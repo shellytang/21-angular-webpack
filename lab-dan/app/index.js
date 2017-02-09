@@ -4,29 +4,47 @@ require('./scss/main.scss')
 
 angular.module('cowsayModule', [])
 
-angular.module('cowsayModule').controller('cowsayCtrl', [update])
+angular.module('cowsayModule').controller('cowsayCtrl', ['$log', update])
 
-function update () {
+function update ($log) {
   let self = this
+  let defaultMsg = 'Type something!'
+  self.saves = []
+  self.creatures = []
+  self.formOutput = defaultMsg
+  self.copyOutput = ''
 
-  self.title = 'Angular Dragon Speak'
+  cowsay.list((err, cows) => {
+    if (err) $log.error(err)
+    self.creatures = cows
+  })
+
+  self.title = 'Angular Creature Speak'
 
   self.updateMsg = function () {
-    let response = cowsay.say({
-      text : self.message || 'Say something!',
-      f: 'dragon'
+    self.formOutput = cowsay.say({
+      text : self.form.message || defaultMsg,
+      f: self.form.creature || 'dragon'
     })
-    return '\n' + response
   }
 
-  self.copyOutput = null
+  self.save = function () {
+    if (self.formOutput === defaultMsg && self.saves.length === 0) return
+    self.saves.push(angular.copy(self.formOutput || ''))
+  }
 
-  self.copy = function () {
-    self.copyOutput = self.updateMsg()
+  self.undo = function () {
+    self.saves.pop()
   }
 
   self.reset = function () {
-    self.copyOutput = null
-    self.message = null
+    self.saves = []
+    self.form.message = ''
+    self.formOutput = defaultMsg
+  }
+
+  self.getRandIndex = function () {
+    let result = Math.floor((Math.random()*100)) % self.creatures.length
+    return result
   }
 }

@@ -3,7 +3,7 @@ module.exports = {
   entry: './app',
   output: {
     filename: 'bundle.js',
-    path: './build',
+    path: `${__dirname}/build`,
   },
   module: {
     loaders: [
