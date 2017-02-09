@@ -11,21 +11,40 @@ const angular = require('angular');
 const demoApp = angular.module('demoApp', []);
 
 // angular constructus
-demoApp.controller('CowsayController', ['$log', '$scope', CowsayController]);
+demoApp.controller('CowsayController', ['$log', CowsayController]);
 
-function CowsayController($log, $scope) {
+function CowsayController($log) {
   $log.debug('init CowsayController');
-  let cowsayCtrl = $scope.cowsayCtrl = {};
-  cowsayCtrl.title = 'Moooooo';
 
-  cowsayCtrl.updateCow = function(input) {
+  this.title = 'What does the cow say?'
+  // this.cowsayFile = ['default']
+  this.history = []
+  this.mostRecent
+  this.animals = null
+
+  cowsay.list((err, list) => {
+    this.animals = list
+    this.current = this.animals[0]
+  })
+
+  this.updateCow = function(input) {
     $log.debug('cowsayCtrl.updateCow()');
-    return '\n' + cowsay.say({text: input || 'gimme something to say'});
-  };
+    return '\n' + cowsay.say({text: input || 'gimme something to say', f: this.current});
+  }
 
-  $scope.$on('Save', function(data) {
-    $log.debug('cowsayCtrl.save');
-    $log.log('data: ', data);
-    cowsayCtrl.updateCow('test');
-  });
+  this.submit = function() {
+    $log.debug('cowsayCtrl.submit()')
+    if (this.text) {
+      this.history.push(this.updateCow(this.text))
+      this.mostRecent = this.history[this.history.length - 1]
+      this.text = ''
+    }
+  }
+
+  this.undo = function() {
+    $log.debug('cowsayCtrl.undo()')
+    this.history.pop()
+    this.mostRecent = this.history[this.history.length - 1]
+  }
+
 }

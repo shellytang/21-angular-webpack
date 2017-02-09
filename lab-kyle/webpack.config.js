@@ -1,14 +1,14 @@
 let HTMLPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  entry: './app/index.js',
+  entry: `${__dirname}/app/index.js`,
   output: {
     filename: 'bundle.js',
-    path: './build'
+    path: `${__dirname}/build`
   },
   plugins: [
     new HTMLPlugin({
-      template: './app/index.html'
+      template: `${__dirname}/app/index.html`
     }),
   ],
   module: {
@@ -16,6 +16,11 @@ module.exports = {
       {
         test: /\.scss$/,
         use: ['style-loader', 'css-loader', 'sass-loader']
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: 'babel-loader'
       }
     ]
   },
