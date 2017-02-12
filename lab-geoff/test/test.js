@@ -17,7 +17,6 @@ describe('CowSayController', function() {
 
   describe('initial properties', function() {
     it('should have a title COW SAY', function() {
-      console.log(cowSay);
       expect(cowSay.title).toBe('COW SAY');
     });
     it('should have an empty array called cowOptions', function() {
@@ -35,8 +34,14 @@ describe('CowSayController', function() {
   });
 
   describe('update()', function() {
-    it('should return a cowsay.say call', function() {
-      //not sure
+    it('should return a cowsay.say with Moo! as the text by default', function() {
+
+      let testEx = cowSay.update();
+      let moo = '\n' + cowsay.say({
+        text: 'Moo!'
+      });
+
+      expect(testEx).toBe(moo);
     });
   });
 
