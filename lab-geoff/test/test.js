@@ -14,6 +14,7 @@ describe('CowSayController', function() {
       cowSay = new $controller('CowSayController');
     });
   });
+
   describe('initial properties', function() {
     it('should have a title COW SAY', function() {
       console.log(cowSay);
@@ -31,5 +32,19 @@ describe('CowSayController', function() {
     it('the property custom should be set to default', function() {
       expect(cowSay.custom).toBe('default');
     });
+  });
+
+  describe('update()', function() {
+    it('should return a cowsay.say call', function() {
+      //not sure
+    });
+  });
+
+  describe('save()', function() {
+
+  });
+
+  describe('undo()', function() {
+
   });
 });
