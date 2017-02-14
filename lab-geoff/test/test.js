@@ -36,20 +36,22 @@ describe('CowSayController', function() {
   describe('update()', function() {
     it('should return a cowsay.say with Moo! as the text by default', function() {
 
-      let testUpdate = cowSay.update();
-      let moo = '\n' + cowsay.say({
-        text: 'Moo!'
-      });
+      let testUpdate = cowSay.update('Moo!');
+      let moo = '\n' + cowsay.say({ text: 'Moo!' });
 
       expect(testUpdate).toBe(moo);
     });
   });
 
   describe('save()', function() {
-    cowSay.text = 'Moo!';
-    cowSay.save();
-    expect(cowSay.saved).toBe(moo);
-    expect(cowSay.savedCows.length).toBe(1);
+    it('should save a cow', function() {
+      let testSave = '\n' + cowsay.say({ text: 'test' });
+      cowSay.text = 'test';
+      cowSay.save();
+
+      expect(cowSay.saved).toBe(testSave);
+      expect(cowSay.savedCows[0]).toBe(testSave);
+    });
   });
 
   describe('undo()', function() {
