@@ -46,7 +46,7 @@ describe('CowSayController', function() {
   describe('save()', function() {
     it('should save a cow', function() {
       let testSave = '\n' + cowsay.say({ text: 'test' });
-      cowSay.text = 'test';
+      cowSay.updateText = 'test';
       cowSay.save();
 
       expect(cowSay.saved).toBe(testSave);
@@ -55,6 +55,19 @@ describe('CowSayController', function() {
   });
 
   describe('undo()', function() {
+    it('should remove a cow from savedCows', function() {
+      let testOne = cowSay.update('testOne');
+      cowSay.save();
+      let testTwo = cowSay.update('testTwo');
+      cowSay.save();
 
+      expect(cowSay.saved).toBe(testTwo);
+      expect(cowSay.savedCows.length).toBe(2);
+
+      cowSay.undo();
+
+      expect(cowSay.saved).toBe(testOne);
+      expect(cowSay.savedCows.length).toBe(1);
+    });
   });
 });

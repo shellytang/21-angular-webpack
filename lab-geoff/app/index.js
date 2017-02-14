@@ -28,7 +28,7 @@ function CowSayController() {
   });
 
   this.update = function(input) {
-    // this.updateText = input;
+    this.updateText = input;
     return '\n' + cowSay.say({
       text: input || 'Moo!',
       f: this.custom.trim(),
@@ -37,7 +37,7 @@ function CowSayController() {
 
   this.save = function() {
     this.saved = '\n' + cowSay.say({
-      text: this.text,
+      text: this.updateText,
       f: this.custom.trim()
     });
     this.savedCows.push(this.saved);
