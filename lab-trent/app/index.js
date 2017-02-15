@@ -1,6 +1,6 @@
 'use strict';
 
-require('./scss/main.scss');
+require('./partials/main.scss');
 
 const angular = require('angular');
 const cowsay = require('cowsay-browser');
