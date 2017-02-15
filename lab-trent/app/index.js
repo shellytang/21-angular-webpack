@@ -7,7 +7,7 @@ const cowsay = require('cowsay-browser');
 
 const cowsayApp = angular.module('cowsayApp', []);
 
-cowsayApp.controller('CowsayController', ['$log', '$scope' CowsayController]);
+cowsayApp.controller('CowsayController', ['$log', '$scope', CowsayController]);
 
 function CowsayController($log, $scope) {
   $scope.cowsayCtrl = {};
@@ -16,7 +16,7 @@ function CowsayController($log, $scope) {
     return '\n' + cowsay.say({text: input || ' '});
   };
 
-  $scope.cowsayCtrl.save() = function() {
+  $scope.cowsayCtrl.save = function() {
 
   };
 }
