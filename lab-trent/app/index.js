@@ -12,11 +12,11 @@ cowsayApp.controller('CowsayController', ['$log', '$scope' CowsayController]);
 function CowsayController($log, $scope) {
   $scope.cowsayCtrl = {};
 
-  cowsayCtrl.cowify = function(input) {
+  $scope.cowsayCtrl.cowify = function(input) {
     return '\n' + cowsay.say({text: input || ' '});
   };
 
-  cowsayCtrl.save() = function() {
+  $scope.cowsayCtrl.save() = function() {
 
   };
 }
