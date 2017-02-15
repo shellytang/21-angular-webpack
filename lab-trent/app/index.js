@@ -7,14 +7,32 @@ const cowsay = require('cowsay-browser');
 
 const cowsayApp = angular.module('cowsayApp', []);
 
-cowsayApp.controller('CowsayController', ['$log', CowsayController]);
+cowsayApp.controller('CowsayController', [CowsayController]);
 
-function CowsayController($log) {
-  this.cowify = function(input) {
-    return '\n' + cowsay.say({text: input || ' '});
+function CowsayController() {
+  this.history = [];
+  this.input = 'Nothing';
+  this.cowList = [];
+
+  cowsay.list((err, list) => {
+    this.cowList = list;
+    this.cowFile = list[0];
+  });
+
+  this.getPreviewText = function() {
+    return this.cowify(this.input, this.cowFile);
+  };
+
+  this.cowify = function(text, cowFile) {
+    return '\n' + cowsay.say({text: text || ' ', f: cowFile });
   };
 
   this.save = function() {
+    if (!this.input) return;
+    this.history.push();
+  };
 
+  this.undo = function() {
+    this.input = this.history.pop();
   };
 }

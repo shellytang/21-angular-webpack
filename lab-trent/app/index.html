@@ -7,11 +7,19 @@
   <body>
     <section ng-controller="CowsayController as cowsayCtrl">
       <h1>Welcome to Cowsay</h1>
-      <input type="text" value="Input text" ng-model="cowsayCtrl.input">
-      <button type="button" ng-click="cowsayCtrl.save()">Save</button>
-
+      <form class="" ng-submit="cowsayCtrl.save()">
+        <input type="text" value="Input text" ng-model="cowsayCtrl.input">
+        <button type="submit" ng-click="cowsayCtrl.save()">Save</button>
+        <select ng-model="cowsayCtrl.cowFile">
+          <option ng-repeat="cow in cowsayCtrl.cowList" value="{{cow}}">{{cow}}</option>
+        </select>
+      </form>
       <pre>
-        {{cowsayCtrl.cowify(cowsayCtrl.input)}}
+        {{cowsayCtrl.cowify()}}
+      </pre>
+      <button type="button" ng-click="cowsayCtrl.undo()">Undo</button>
+      <pre ng-show="cowsayCtrl.history.length > 0">
+        {{cowsayCtrl.history[cowsayCtrl.history.length-1]}}
       </pre>
     </section>
   </body>
