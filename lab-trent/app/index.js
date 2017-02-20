@@ -29,10 +29,13 @@ function CowsayController() {
 
   this.save = function() {
     if (!this.input) return;
-    this.history.push();
+    this.history.push({ cowFile: this.cowFile, input: this.input });
   };
 
   this.undo = function() {
-    this.input = this.history.pop();
+    let last = this.history.pop();
+    if (!last) return;
+    this.input = last.input;
+    this.cowFile = last.cowFile;
   };
 }

@@ -2,7 +2,7 @@
 <html ng-app="cowsayApp">
   <head>
     <meta charset="utf-8">
-    <title>Lab 21</title>
+    <title>Lab 22</title>
   </head>
   <body>
     <section ng-controller="CowsayController as cowsayCtrl">
@@ -15,11 +15,11 @@
         </select>
       </form>
       <pre>
-        {{cowsayCtrl.cowify()}}
+        {{cowsayCtrl.getPreviewText()}}
       </pre>
       <button type="button" ng-click="cowsayCtrl.undo()">Undo</button>
       <pre ng-show="cowsayCtrl.history.length > 0">
-        {{cowsayCtrl.history[cowsayCtrl.history.length-1]}}
+        {{cowsayCtrl.cowify(cowsayCtrl.history[cowsayCtrl.history.length-1].input, cowsayCtrl.history[cowsayCtrl.history.length-1].cowFile)}}
       </pre>
     </section>
   </body>
