@@ -30,6 +30,7 @@ function CowsayController() {
   this.save = function() {
     if (!this.input) return;
     this.history.push({ cowFile: this.cowFile, input: this.input });
+    return this.history.peek();
   };
 
   this.undo = function() {
@@ -37,5 +38,6 @@ function CowsayController() {
     if (!last) return;
     this.input = last.input;
     this.cowFile = last.cowFile;
+    return last;
   };
 }
