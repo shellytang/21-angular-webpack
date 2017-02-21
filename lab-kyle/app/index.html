@@ -1,33 +1,38 @@
 <!DOCTYPE html>
-<html ng-app="demoApp">
+<html ng-app="cowsayApp">
   <head>
     <meta charset="utf-8">
     <title>Cowsay Client</title>
   </head>
-  <body ng-controller="CowsayController as cowsayCtrl">
-    <section>
+  <body>
+
+    <main ng-controller="CowsayController as cowsayCtrl" ng-cloak>
       <h1> {{cowsayCtrl.title}} </h1>
 
+      <section>
 
-      <form ng-submit="cowsayCtrl.submit()" novalidate>
-        <input type="text" ng-model="cowsayCtrl.text">
-        <!-- {{ cowsayCtrl.animals }} -->
-        <select ng-model="cowsayCtrl.current">
-          <option ng-repeat="animal in cowsayCtrl.animals" value="{{animal}}">{{animal}}</option>
-        </select>
-        <input type="submit" value="Submit">
+        <form ng-submit="cowsayCtrl.submit(cowsayCtrl.text)" novalidate>
+          <input type="text" ng-model="cowsayCtrl.text" ng-required="required">
+
+          <select ng-model="cowsayCtrl.current">
+            <option ng-repeat="animal in cowsayCtrl.animals" value="{{animal}}">{{animal}}</option>
+          </select>
+          <input type="submit" value="Submit">
+        </form>
+
         <pre>
           {{cowsayCtrl.updateCow(cowsayCtrl.text)}}
         </pre>
-      </form>
-    </section>
 
-    <section ng-show="cowsayCtrl.history[0]">
-      <pre>
-        {{cowsayCtrl.mostRecent}}
-      </pre>
-      <button ng-click="cowsayCtrl.undo()">click me to undo</button>
-    </section>
+      </section>
+
+      <section id="current" ng-show="cowsayCtrl.history[0]">
+        <pre>
+          {{cowsayCtrl.mostRecent}}
+        </pre>
+        <button ng-click="cowsayCtrl.undo()">click me to undo</button>
+      </section>
+    </main>
 
   </body>
 </html>

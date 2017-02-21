@@ -1,30 +1,27 @@
 'use strict';
 
 // require webpack assets
-require('./scss/main.scss')
+require('./scss/core.scss')
 
 // npm modules
 const cowsay = require('cowsay-browser');
 const angular = require('angular');
 
 // angular modulen
-const demoApp = angular.module('demoApp', []);
+const demoApp = angular.module('cowsayApp', []);
 
 // angular constructus
-demoApp.controller('CowsayController', ['$log', CowsayController]);
+demoApp.controller('CowsayController', ['$log', '$location', '$anchorScroll', CowsayController]);
 
-function CowsayController($log) {
+function CowsayController($log, $location, $anchorScroll) {
   $log.debug('init CowsayController');
 
   this.title = 'What does the cow say?'
-  // this.cowsayFile = ['default']
   this.history = []
-  this.mostRecent
-  this.animals = null
 
   cowsay.list((err, list) => {
     this.animals = list
-    this.current = this.animals[0]
+    this.current = this.animals[8]
   })
 
   this.updateCow = function(input) {
@@ -32,13 +29,16 @@ function CowsayController($log) {
     return '\n' + cowsay.say({text: input || 'gimme something to say', f: this.current});
   }
 
-  this.submit = function() {
+  this.submit = function(input) {
     $log.debug('cowsayCtrl.submit()')
-    if (this.text) {
-      this.history.push(this.updateCow(this.text))
-      this.mostRecent = this.history[this.history.length - 1]
-      this.text = ''
-    }
+    // if (this.text) {
+    this.newCow = this.updateCow(input)
+    this.history.push(this.newCow)
+    this.mostRecent = this.history[this.history.length - 1]
+    this.text = ''
+    $location.hash('current')
+    $anchorScroll()
+    // }
   }
 
   this.undo = function() {
