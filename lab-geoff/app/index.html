@@ -5,13 +5,24 @@
     <title>Lab21-CowSay</title>
   </head>
   <body>
-    <section ng-controller="CowSayController">
-      <h1> {{cowSayCtrl.title}} </h1>
-      <input type="text" ng-model="cowSayCtrl.text">
-      <button ng-click="cowSayCtrl.click(cowSayCtrl.text)">Click Here</button>
+    <section ng-controller="CowSayController as cowSay">
+      <form novalidate ng-submit="cowSay.save()">
+        <input type="text" ng-model="cowSay.text">
+        <input type="submit" value="Save">
+        <select ng-model="cowSay.custom">
+          <option ng-repeat="option in cowSay.cowOptions">
+            {{option}}
+          </option>
+        </select>
+        <pre>
+          {{cowSay.title}}
+          {{cowSay.update(cowSay.text)}}
+        </pre>
+      </form>
       <pre>
-        {{cowSayCtrl.update(cowSayCtrl.text)}}
+        {{cowSay.saved}}
       </pre>
+      <button ng-click="cowSay.undo()">Undo</button>
     </section>
   </body>
 </html>

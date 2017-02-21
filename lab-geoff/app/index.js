@@ -7,19 +7,42 @@ let angular = require('angular');
 
 let cowApp = angular.module('cowApp', []);
 
-cowApp.controller('CowSayController', ['$scope', CowSayController]);
+cowApp.controller('CowSayController', [CowSayController]);
 
-function CowSayController($scope) {
-  let cowSayCtrl = $scope.cowSayCtrl = {};
-  cowSayCtrl.title = 'COW SAY';
+function CowSayController() {
+  this.title = 'COW SAY';
+  this.cowOptions = [];
+  this.saved = '';
+  this.savedCows = [];
+  this.custom = 'default';
 
-  cowSayCtrl.update = function(input) {
-    console.log('\n' + cowSay.say({text: input}));
-    return '\n' + cowSay.say({text: input});
+  cowSay.list((err, list) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    list.forEach(item => {
+      this.cowOptions.push(item);
+    });
+  });
+
+  this.update = function(input) {
+    return '\n' + cowSay.say({
+      text: input || 'Moo!',
+      f: this.custom.trim(),
+    });
   };
 
-  cowSayCtrl.click = function(input) {
-    console.log(input);
-    console.log('click happened');
+  this.save = function() {
+    this.saved = '\n' + cowSay.say({
+      text: this.text,
+      f: this.custom.trim()
+    });
+    this.savedCows.push(this.saved);
+  };
+
+  this.undo = function() {
+    this.savedCows.pop();
+    this.saved = this.savedCows[this.savedCows.length - 1];
   };
 }
