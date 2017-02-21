@@ -2,16 +2,24 @@
 <html ng-app="cowsayApp">
   <head>
     <meta charset="utf-8">
-    <title>Lab 21</title>
+    <title>Lab 22</title>
   </head>
   <body>
-    <section ng-controller="CowsayController">
+    <section ng-controller="CowsayController as cowsayCtrl">
       <h1>Welcome to Cowsay</h1>
-      <input type="text" value="Input text" ng-model="cowsayCtrl.input">
-      <button type="button" ng-click="cowsayCtrl.save()">Save</button>
-
+      <form class="" ng-submit="cowsayCtrl.save()">
+        <input type="text" value="Input text" ng-model="cowsayCtrl.input">
+        <button type="submit" ng-click="cowsayCtrl.save()">Save</button>
+        <select ng-model="cowsayCtrl.cowFile">
+          <option ng-repeat="cow in cowsayCtrl.cowList" value="{{cow}}">{{cow}}</option>
+        </select>
+      </form>
       <pre>
-        {{cowsayCtrl.cowify(cowsayCtrl.input)}}
+        {{cowsayCtrl.getPreviewText()}}
+      </pre>
+      <button type="button" ng-click="cowsayCtrl.undo()">Undo</button>
+      <pre ng-show="cowsayCtrl.history.length > 0">
+        {{cowsayCtrl.cowify(cowsayCtrl.history[cowsayCtrl.history.length-1].input, cowsayCtrl.history[cowsayCtrl.history.length-1].cowFile)}}
       </pre>
     </section>
   </body>
