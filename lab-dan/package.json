@@ -8,7 +8,8 @@
   "scripts": {
     "build": "webpack",
     "babel": "babel app -d build",
-    "watch": "webpack-dev-server --inline --hot"
+    "watch": "webpack-dev-server --inline --hot",
+    "test": "karma start --single-run"
   },
   "dependencies": {
     "angular": "^1.6.1",
@@ -28,7 +29,18 @@
     "postcss-loader": "^1.2.2",
     "sass-loader": "^4.1.1",
     "style-loader": "^0.13.1",
-    "webpack": "^2.2.1",
+    "webpack": "^2.2.1"
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.6.1",
+    "jasmine-core": "^2.5.2",
+    "karma": "^1.4.1",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-jasmine": "^1.1.0",
+    "karma-mocha-reporter": "^2.2.2",
+    "karma-phantomjs-launcher": "^1.0.2",
+    "karma-webpack": "^2.0.2",
+    "phantomjs-prebuilt": "^2.1.14",
     "webpack-dev-server": "^2.3.0"
   }
 }

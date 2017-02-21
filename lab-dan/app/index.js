@@ -4,7 +4,7 @@ require('./scss/main.scss')
 
 angular.module('cowsayModule', [])
 
-angular.module('cowsayModule').controller('cowsayCtrl', ['$log', update])
+angular.module('cowsayModule').controller('CowsayCtrl', ['$log', update])
 
 function update ($log) {
   let self = this
@@ -12,14 +12,12 @@ function update ($log) {
   self.saves = []
   self.creatures = []
   self.formOutput = defaultMsg
-  self.copyOutput = ''
+  self.title = 'Angular Creature Speak'
 
   cowsay.list((err, cows) => {
     if (err) $log.error(err)
     self.creatures = cows
   })
-
-  self.title = 'Angular Creature Speak'
 
   self.updateMsg = function () {
     self.formOutput = cowsay.say({
@@ -44,7 +42,6 @@ function update ($log) {
   }
 
   self.getRandIndex = function () {
-    let result = Math.floor((Math.random()*100)) % self.creatures.length
-    return result
+    return Math.floor((Math.random()*100)) % self.creatures.length
   }
 }
