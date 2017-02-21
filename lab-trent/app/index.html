@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html ng-app="cowsayApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Lab 21</title>
+  </head>
+  <body>
+    <section ng-controller="CowsayController">
+      <h1>Welcome to Cowsay</h1>
+      <input type="text" value="Input text" ng-model="cowsayCtrl.input">
+      <button type="button" ng-click="cowsayCtrl.save()">Save</button>
+
+      <pre>
+        {{cowsayCtrl.cowify(cowsayCtrl.input)}}
+      </pre>
+    </section>
+  </body>
+</html>
