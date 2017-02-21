@@ -25,8 +25,9 @@ function CowsayController($log){
   this.title = 'render a cow';
   this.currentCow = '';
 
-  this.updateCow = function(){
-    $log.debug('cowsayCtrl.updateCow stuff');
+  this.makeCow = function(){
+    //makes a damn cow
+    $log.debug('cowsayCtrl.makeCow stuff');
     return '\n' + cowsay.say({text: this.text || 'im gonna say cool stuff', f: this.selectedOption || 'tux'});
   };
   this.title2 = 'basic text render';
@@ -34,13 +35,15 @@ function CowsayController($log){
   this.arrayOfSubmissions = [];
 
   this.submitCowState = function(){
-    let savedText = this.updateCow(this.text);
+    //execute submitCowState to push text into the array so we can go back to a saved state with the undo button
+    let savedText = this.makeCow();
     this.arrayOfSubmissions.push(savedText);
     this.currentCow = this.arrayOfSubmissions[this.arrayOfSubmissions.length - 1];
     console.log(this.arrayOfSubmissions);
   };
 
   this.undo = function(){
+    //removes saved "state" from the arrayOfSubmissions on click AND updates current cow in the DOM
     this.arrayOfSubmissions.pop();
     this.currentCow = this.arrayOfSubmissions[this.arrayOfSubmissions.length - 1];
     console.log(this.arrayOfSubmissions);
