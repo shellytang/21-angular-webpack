@@ -1,4 +1,4 @@
-![cf](https://i.imgur.com/7v5ASc8.png) Lab 20 - Intro to Angular and Webpack
+![cf](https://i.imgur.com/7v5ASc8.png) Lab 21 - Intro to Angular and Webpack
 ======
 
 ## To Submit this Assignment
