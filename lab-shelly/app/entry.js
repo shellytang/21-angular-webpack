@@ -27,4 +27,6 @@ function CowsayController($log, $scope) {
     $log.log(input);
   };
 
+
+
 }
