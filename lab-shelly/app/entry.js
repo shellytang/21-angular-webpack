@@ -2,7 +2,6 @@
 
 // require('./scss/reset.scss');
 // require('./scss/main.scss');
-
 const angular = require('angular');
 const cowsay = require('cowsay-browser');
 
@@ -15,18 +14,15 @@ function CowsayController($log, $scope) {
 
   let cowsayCtrl = $scope.cowsayCtrl = {};
 
-  cowsayCtrl.title = 'Welcome to Cowville';
+  cowsayCtrl.title = 'Welcome to Turtleville';
 
   cowsayCtrl.speak = function(input) {
     $log.debug('#cowsayCtrl.speak');
-    return cowsay.say({text: input || 'moooo', f: 'dragon'});
+    return cowsay.say({text: input || 'Hello', f: 'turtle'});
   };
 
   cowsayCtrl.logger = function(input) {
     $log.debug('#cowsayCtrl.logger');
     $log.log(input);
   };
-
-
-
 }
